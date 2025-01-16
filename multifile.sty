@@ -41,9 +41,11 @@
 }
 \makeatother 
 
-\newenvironment{ifrootfile}
-  {\ifnum\value{includedepth}=0}    % start condition
-  {\fi}                             % end condition
+\newcommand{\ifrootfile}[1]{
+    \ifnum\value{includedepth}=0%
+    #1%
+    \fi%
+}
 
 %%% packages
 \RequirePackage{standalone}
