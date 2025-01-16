@@ -28,18 +28,26 @@
 \newcommand{\preamblefp}{\multifile@preamblefp}
 \newcommand{\thisfp}{.} %the file path of the current document
 
+\newcounter{includedepth}
+\setcounter{includedepth}{0}
+
 % include a new file with correct setting of \thisfp
 \makeatletter
 \newcommand{\includefrom}[2]{
-\renewcommand{\thisfp}{#1}
-\include{#1/#2}
+    \stepcounter{includedepth}
+    \renewcommand{\thisfp}{#1}
+    \include{#1/#2}
+    \addtocounter{includedepth}{-1}
 }
 \makeatother 
+
+\newenvironment{isrootfile}
+  {\ifnum\value{includedepth}=0}    % start condition
+  {\fi}                             % end condition
 
 %%% packages
 \RequirePackage{standalone}
 
 \input{\rootfp/\preamblefp}
 
-% Document class end
 \endinput
