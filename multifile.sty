@@ -25,6 +25,7 @@
 \ProcessKeyvalOptions*
 
 \newcommand{\rootfp}{\multifile@fp}
+\newcommand{\preamblefp}{\multifile@preamblefp}
 \newcommand{\thisfp}{.} %the file path of the current document
 
 % include a new file with correct setting of \thisfp
@@ -38,7 +39,7 @@
 %%% packages
 \RequirePackage{standalone}
 
-\input{\rootfp/\multifile@preamblefp}
+\input{\rootfp/\preamblefp}
 
 % Document class end
 \endinput
