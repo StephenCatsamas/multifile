@@ -20,7 +20,7 @@
 
 \RequirePackage{kvoptions}
 \DeclareStringOption[]{fp} % this should be initialised with the filepath of the root directory
-\DeclareStringOption[preamble.tex]{preamblefp} %this should be initialised with the filepath of the root directory
+\DeclareStringOption[preamble.tex]{preamblefp} %this should be initialised with the filepath to the preamble
 \DeclareBoolOption{draft}
 \ProcessKeyvalOptions*
 
@@ -38,7 +38,7 @@
 %%% packages
 \RequirePackage{standalone}
 
-\input{\rootfp/\preamblefp}
+\input{\rootfp/\multifile@preamblefp}
 
 % Document class end
 \endinput
