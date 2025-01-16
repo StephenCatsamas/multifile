@@ -15,18 +15,26 @@
 
 
 \section{Options}
-\subsection{\texttt{opt1}}\label{sec:opt:opt1}
-    This option changes something
+\subsection{\texttt{fp}}\label{sec:opt:fp}
+    This option should be set to the filepath of the root project directory
+
+\subsection{\texttt{preamblefp}}\label{sec:opt:preamblefp}
+    This options should be set to the relative filepath from the root project directory of a \texttt{.tex} file containing the preamble to be included for a standalone compilation of the current file. 
 
 \section{Commands}
-\subsection{a command subsection}\label{sec:com:example}
+% \subsection{a command subsection}\label{sec:com:example}
 
-\subsubsection{\texttt{\textbackslash example[2]}}
-    This command does something with \#1 and \#2.
+\subsubsection{\texttt{\textbackslash rootfp}}
+    The filepath of the project root directory.
+
+\subsubsection{\texttt{\textbackslash thisfp}}
+    The filepath of the current file
+
+\subsubsection{\texttt{\textbackslash includefrom[2]}}
+    Include the file \#2 from the directory \#1 and set \texttt{\textbackslash thisfp} to \#1.
 
 
 \section{Examples}
-\subsection{a good example}
-with some more example text
+
 
 \end{document}

@@ -1,4 +1,4 @@
-%% commons.sty
+%% multifile.sty
 %% Copyright 2025 S. E. Catsamas
 %
 % This work may be distributed and/or modified under the
@@ -13,18 +13,32 @@
 % 
 % The Current Maintainer of this work is S. E. Catsamas.
 %
-% This work consists of the files commons.sty
+% This work consists of the files multifile.sty
 
 \NeedsTeXFormat{LaTeX2e} % Ensure LaTeX2e format
 \ProvidesPackage{multifile}[2025/01/16 A package to make compiling sections in multifile documents easier]
 
 \RequirePackage{kvoptions}
-\DeclareStringOption[]{fp}
+\DeclareStringOption[]{fp} % this should be initialised with the filepath of the root directory
+\DeclareStringOption[preamble.tex]{preamblefp} %this should be initialised with the filepath of the root directory
 \DeclareBoolOption{draft}
 \ProcessKeyvalOptions*
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\rootfp}{\multifile@fp}
+\newcommand{\thisfp}{.} %the file path of the current document
 
+% include a new file with correct setting of \thisfp
+\makeatletter
+\newcommand{\includefrom}[2]{
+\renewcommand{\thisfp}{#1}
+\include{#1/#2}
+}
+\makeatother 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% packages
+\RerquirePackage{standalone}
+
+\input{\rootfp/\preamblefp}
+
+% Document class end
 \endinput
